@@ -1,0 +1,43 @@
+{
+    "format": "2",
+    "date": "03/21/2007",
+    "pages": [
+        {
+            "page": 1,
+            "paragraphs": [
+                {
+                    "paragraph": 1,
+                    "sentences": [
+                        "The Federal Open Market Committee decided today to keep its target for the federal funds rate at 5-3/4 percent."
+                    ]
+                },
+                {
+                    "paragraph": 2,
+                    "sentences": [
+                        "Recent indicators have been mixed and the adjustment in the housing sector is ongoing."
+                    ]
+                },
+                {
+                    "paragraph": 3,
+                    "sentences": [
+                        "Nevertheless, the economy seems likely to continue to expand at a moderate pace over coming quarters."
+                    ]
+                },
+                {
+                    "paragraph": 4,
+                    "sentences": [
+                        "Recent readings on core inflation have been somewhat elevated.",
+                        "Although inflation pressures seem likely to moderate over time, the high level of resource utilization has the potential to sustain those pressures."
+                    ]
+                },
+                {
+                    "paragraph": 5,
+                    "sentences": [
+                        "In these circumstances, the Committee's predominant policy concern remains the risk that inflation will fail to moderate as expected.",
+                        "Future policy adjustments will depend on the evolution of the outlook for both inflation and economic growth, as implied by incoming information."
+                    ]
+                }
+            ]
+        }
+    ]
+}

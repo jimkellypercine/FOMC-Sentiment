@@ -1,0 +1,39 @@
+{
+    "format": "1",
+    "date": "02/02/2005",
+    "pages": [
+        {
+            "page": 1,
+            "paragraphs": [
+                {
+                    "paragraph": 1,
+                    "sentences": [
+                        "federal open market committee decide today raise target federal fund rate 25 basis point 234 percent ."
+                    ]
+                },
+                {
+                    "paragraph": 2,
+                    "sentences": [
+                        "committee believe action stance monetary policy remain accommodative couple robust underlying growth productivity provide ongoing support economic activity .",
+                        "output appear grow moderate pace despite rise energy price labor market condition continue improve gradually ."
+                    ]
+                },
+                {
+                    "paragraph": 3,
+                    "sentences": [
+                        "inflation longerterm inflation expectation remain contain .",
+                        "committee perceive upside downside risk attainment sustainable growth price stability quarter roughly equal .",
+                        "underlie inflation expect relatively low committee believe policy accommodation remove pace likely measure .",
+                        "nonetheless"
+                    ]
+                },
+                {
+                    "paragraph": 4,
+                    "sentences": [
+                        "committee respond change economic prospect need fulfill obligation maintain price stability ."
+                    ]
+                }
+            ]
+        }
+    ]
+}

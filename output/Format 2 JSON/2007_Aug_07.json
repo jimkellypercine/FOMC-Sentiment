@@ -1,0 +1,45 @@
+{
+    "format": "2",
+    "date": "08/07/2007",
+    "pages": [
+        {
+            "page": 1,
+            "paragraphs": [
+                {
+                    "paragraph": 1,
+                    "sentences": [
+                        "The Federal Open Market Committee decided today to keep its target for the federal funds rate at 5-3/4 percent."
+                    ]
+                },
+                {
+                    "paragraph": 2,
+                    "sentences": [
+                        "Economic growth was moderate during the first half of the year.",
+                        "Financial markets have been volatile in recent weeks, credit conditions have become tighter for some households and businesses, and the housing correction is ongoing.",
+                        "Nevertheless, the economy seems likely to continue to expand at a moderate pace over coming quarters, supported by solid growth in employment and incomes and a robust global economy."
+                    ]
+                },
+                {
+                    "paragraph": 3,
+                    "sentences": [
+                        "Readings on core inflation have improved modestly in recent months.",
+                        "However, a sustained moderation in inflation pressures has yet to be convincingly demonstrated.",
+                        "Moreover, the high level of resource utilization has the potential to sustain those pressures."
+                    ]
+                },
+                {
+                    "paragraph": 4,
+                    "sentences": [
+                        "Although the downside risks to growth have increased somewhat, the Committee's predominant policy concern remains the risk that inflation will fail to moderate as expected."
+                    ]
+                },
+                {
+                    "paragraph": 5,
+                    "sentences": [
+                        "Future policy adjustments will depend on the outlook for both inflation and economic growth, as implied by incoming information."
+                    ]
+                }
+            ]
+        }
+    ]
+}

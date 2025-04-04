@@ -1,0 +1,39 @@
+{
+    "format": "1",
+    "date": "02/02/2005",
+    "pages": [
+        {
+            "page": 1,
+            "paragraphs": [
+                {
+                    "paragraph": 1,
+                    "sentences": [
+                        "The Federal Open Market Committee decided today to raise its target for the federal funds rate by 25 basis points to 2-3/4 percent."
+                    ]
+                },
+                {
+                    "paragraph": 2,
+                    "sentences": [
+                        "The Committee believes that, even after this action, the stance of monetary policy remains accommodative and, coupled with robust underlying growth in productivity, is providing ongoing support to economic activity.",
+                        "Output appears to be growing at a moderate pace despite the rise in energy prices, and labor market conditions continue to improve gradually."
+                    ]
+                },
+                {
+                    "paragraph": 3,
+                    "sentences": [
+                        "Inflation and longer-term inflation expectations remain well contained.",
+                        "The Committee perceives the upside and downside risks to the attainment of both sustainable growth and price stability for the next few quarters to be roughly equal.",
+                        "With underlying inflation expected to be relatively low, the Committee believes that policy accommodation can be removed at a pace that is likely to be measured.",
+                        "Nonetheless, the"
+                    ]
+                },
+                {
+                    "paragraph": 4,
+                    "sentences": [
+                        "Committee will respond to changes in economic prospects as needed to fulfill its obligation to maintain price stability."
+                    ]
+                }
+            ]
+        }
+    ]
+}

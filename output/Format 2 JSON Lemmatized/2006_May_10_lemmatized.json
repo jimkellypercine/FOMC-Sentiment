@@ -1,0 +1,45 @@
+{
+    "format": "2",
+    "date": "05/10/2006",
+    "pages": [
+        {
+            "page": 1,
+            "paragraphs": [
+                {
+                    "paragraph": 1,
+                    "sentences": [
+                        "cleveland richmond atlanta chicago st .",
+                        "louis minneapolis dallas san francisco share"
+                    ]
+                },
+                {
+                    "paragraph": 2,
+                    "sentences": [
+                        "federal open market committee decide today raise target federal fund rate 25 basis point 5 percent ."
+                    ]
+                },
+                {
+                    "paragraph": 3,
+                    "sentences": [
+                        "economic growth strong far year .",
+                        "committee see growth likely moderate sustainable pace partly reflect gradual cooling housing market lag effect increase interest rate energy price ."
+                    ]
+                },
+                {
+                    "paragraph": 4,
+                    "sentences": [
+                        "runup price energy commodity appear modest effect core inflation ongoe productivity gain help hold growth unit labor cost check inflation expectation remain contain .",
+                        "possible increase resource utilization combination elevated price energy commodity potential add inflation pressure ."
+                    ]
+                },
+                {
+                    "paragraph": 5,
+                    "sentences": [
+                        "committee judge policy firming need address inflation risk emphasize extent timing firming depend importantly evolution economic outlook imply incoming information .",
+                        "event committee respond change economic prospect need support attainment objective ."
+                    ]
+                }
+            ]
+        }
+    ]
+}

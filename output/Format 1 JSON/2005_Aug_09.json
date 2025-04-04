@@ -1,0 +1,38 @@
+{
+    "format": "1",
+    "date": "08/09/2005",
+    "pages": [
+        {
+            "page": 1,
+            "paragraphs": [
+                {
+                    "paragraph": 1,
+                    "sentences": [
+                        "The Federal Open Market Committee decided today to raise its target for the federal funds rate by 25 basis points to 3-3/4 percent."
+                    ]
+                },
+                {
+                    "paragraph": 2,
+                    "sentences": [
+                        "The Committee believes that, even after this action, the stance of monetary policy remains accommodative and, coupled with robust underlying growth in productivity, is providing ongoing support to economic activity.",
+                        "Aggregate spending, despite high energy prices, appears to have strengthened since late winter, and labor market conditions continue to improve gradually.",
+                        "Core inflation has been relatively low in recent months and longer-term inflation expectations remain well contained, but pressures on inflation have stayed elevated."
+                    ]
+                },
+                {
+                    "paragraph": 3,
+                    "sentences": [
+                        "The Committee perceives that, with appropriate monetary policy action, the upside and downside risks to the attainment of both sustainable growth and price stability should be kept roughly equal.",
+                        "With underlying inflation expected to be contained, the Committee believes that policy accommodation can be removed at a pace that is likely to be measured."
+                    ]
+                },
+                {
+                    "paragraph": 4,
+                    "sentences": [
+                        "Nonetheless, the Committee will respond to changes in economic prospects as needed to fulfill its obligation to maintain price stability."
+                    ]
+                }
+            ]
+        }
+    ]
+}

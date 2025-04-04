@@ -1,0 +1,41 @@
+{
+    "format": "2",
+    "date": "08/05/2008",
+    "pages": [
+        {
+            "page": 1,
+            "paragraphs": [
+                {
+                    "paragraph": 1,
+                    "sentences": [
+                        "federal open market committee decide today target federal fund rate 2 percent ."
+                    ]
+                },
+                {
+                    "paragraph": 2,
+                    "sentences": [
+                        "economic activity expand second quarter partly reflect growth consumer spending export .",
+                        "labor market soften financial market remain considerable stress .",
+                        "tight credit condition ongoing housing contraction elevated energy price likely weigh economic growth quarter .",
+                        "time substantial easing monetary policy combine ongoing measure foster market liquidity help promote moderate economic growth .",
+                        "inflation high spur early increase price energy commodity indicator inflation expectation elevate .",
+                        ""
+                    ]
+                },
+                {
+                    "paragraph": 3,
+                    "sentences": [
+                        "committee expect inflation moderate later year year inflation outlook remain highly uncertain ."
+                    ]
+                },
+                {
+                    "paragraph": 4,
+                    "sentences": [
+                        "downside risk growth remain upside risk inflation significant concern committee .",
+                        "committee continue monitor economic financial development act need promote sustainable economic growth price stability ."
+                    ]
+                }
+            ]
+        }
+    ]
+}
