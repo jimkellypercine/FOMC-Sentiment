@@ -22,11 +22,10 @@ python pdf2json_combined.py --formats 1 2 3 4 --output-dir "output"
 python pdf2json_combined.py --formats 1 2 3 --output-dir ./output
 ```
 
----
 generate_asset_datasets.py
 
 This script generates the financial data around each speech date. You specify either group 1 or group 2 when you call it, and it generates 2 CSVs (SP00 and 20year Bonds). There are optional command line arguments for how many days before and after you want to get data on.
----
+
 feature_extraction.py 
 
 This script constructs the actual language features about each speech. Topics, their probabilities, sentiment scores, word count, etc. At the very end, it merges this CSV with the financial CSV from generate_asset_datasets. So it assumes you already have a financial dataset put together.
