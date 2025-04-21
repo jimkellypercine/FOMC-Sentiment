@@ -72,7 +72,6 @@ def get_asset_data(dates, ticker, days_before=5, days_after=10,
     Returns:
         pd.DataFrame: DataFrame with price data for each speech date
     """
-    # Initialize lists to store results
     all_data = []
     
     # Get asset data
@@ -80,14 +79,12 @@ def get_asset_data(dates, ticker, days_before=5, days_after=10,
     
     # Process each speech date
     for speech_date in dates:
-        # Set date range with buffer for market holidays
         max_days = max(days_before, momentum_before, volatility_before)
         start_date = speech_date - timedelta(days=max_days * 2)  # Extra buffer for market holidays
         
         max_days_after = max(days_after, momentum_after, volatility_after)
         end_date = speech_date + timedelta(days=max_days_after * 2)
         
-        # Get historical data
         hist_data = asset.history(start=start_date, end=end_date)
         
         if hist_data.empty:
@@ -101,7 +98,6 @@ def get_asset_data(dates, ticker, days_before=5, days_after=10,
         before_data = hist_data[hist_data.index < speech_date].tail(days_before)
         after_data = hist_data[hist_data.index > speech_date].head(days_after)
         
-        # Get speech day closing price and next day prices
         speech_day_data = hist_data[hist_data.index.date == speech_date.date()]
         if not speech_day_data.empty:
             speech_close = speech_day_data['Close'].iloc[-1]
@@ -125,7 +121,6 @@ def get_asset_data(dates, ticker, days_before=5, days_after=10,
         before_volatility_data = hist_data[hist_data.index < speech_date].tail(volatility_before)
         after_volatility_data = hist_data[hist_data.index > speech_date].head(volatility_after)
         
-        # Create row data
         row_data = {
             'ticker': ticker,
             'speech_date': speech_date,
@@ -209,14 +204,13 @@ def main():
         
         # Get asset data for each ticker
         tickers = {
-            'SPY': 'sp500',  # Using SPY instead of ^GSPC
+            'SPY': 'sp500', 
             'TLT': 'bonds'
         }
         
         for ticker, asset_name in tickers.items():
             print(f"\nFetching {asset_name.upper()} data...")
             
-            # Get asset price data with momentum and volatility
             asset_df = get_asset_data(
                 speech_df['date'], 
                 ticker,
@@ -228,7 +222,6 @@ def main():
                 volatility_after=args.volatility_after
             )
             
-            # Merge with speech data
             merged_df = pd.merge(
                 speech_df,
                 asset_df,
@@ -237,10 +230,8 @@ def main():
                 how='left'
             )
             
-            # Drop the redundant speech_date column
             merged_df = merged_df.drop('speech_date', axis=1)
             
-            # Save to CSV
             output_file = f'group{group}_{asset_name}_data.csv'
             merged_df.to_csv(output_file, index=False)
             print(f"Saved {asset_name} data to {output_file}")

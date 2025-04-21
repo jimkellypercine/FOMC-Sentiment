@@ -10,11 +10,9 @@ from PyPDF2 import PdfReader
 import re
 from nltk import ngrams
 
-# Global variables to store most frequent and rarest words
 most_frequent_words = []
 most_rare_words = []
 
-# Global sentiment phrases
 GOOD_PHRASES = [
     "grow", "growth", "expand", "expansion",
     "improve", "improvement", "recover", "recovery",
@@ -36,7 +34,6 @@ BAD_PHRASES = [
     "unstable", "bankrupt", "default", "debt", "crisis", "collapse", "volatility"
 ]
 
-# Define seed topics - you can modify these seed words/phrases
 SEED_TOPICS = {
     'monetary_policy': ['inflation', 'rate', 'stability'],
     'economic_growth': ['growth', 'activity', 'recovery'],
@@ -50,7 +47,6 @@ SEED_TOPICS = {
     'fiscal_external': ['fiscal', 'spending', 'shock']
 }
 
-# Define topic keywords for guided LDA
 TOPIC_KEYWORDS = {
     'macroeconomic_commentary': {
         'words': ['policy', 'rate', 'inflation', 'labor', 'employment', 'unemployment', 'activity', 
@@ -83,7 +79,6 @@ def extract_word_frequencies(group):
     Args:
         group (int): Group number (1 or 2) representing the directories to process.
     """
-    # Define directories for each group
     group_dirs = {
         1: ['output/Format 1 JSON Lemmatized', 'output/Format 2 JSON Lemmatized'],
         2: ['output/Format 3 JSON Lemmatized', 'output/Format 4 JSON Lemmatized']
@@ -93,10 +88,8 @@ def extract_word_frequencies(group):
         print("Invalid group number. Please choose 1 or 2.")
         return
 
-    # Initialize a counter for word frequencies
     word_counter = Counter()
 
-    # Process each directory in the group
     for directory in group_dirs[group]:
         if not os.path.exists(directory):
             print(f"Warning: Directory {directory} not found")
@@ -119,10 +112,8 @@ def extract_word_frequencies(group):
             except Exception as e:
                 print(f"Error processing {json_file}: {str(e)}")
 
-    # Convert counter to dictionary
     word_freq_dict = dict(word_counter)
 
-    # Print the word frequency dictionary
     print("Word Frequency Dictionary:")
     print(word_freq_dict)
 
@@ -131,12 +122,10 @@ def extract_word_frequencies(group):
     p97_5 = np.percentile(frequencies, 97.5)
     p2_5 = np.percentile(frequencies, 2.5)
 
-    # Store most frequent and most rare words in global variables
     global most_frequent_words, most_rare_words
     most_frequent_words = [word for word, freq in word_counter.items() if freq >= p97_5]
     most_rare_words = [word for word, freq in word_counter.items() if freq <= p2_5]
 
-    # Print most frequent and most rare words
     print("\nMost Frequent Words (97.5th percentile):")
     for word in most_frequent_words:
         print(f"{word}: {word_counter[word]}")
@@ -154,7 +143,6 @@ def extract_lda_topics(group):
     Args:
         group (int): Group number (1 or 2) representing the directories to process.
     """
-    # Define directories for each group
     group_dirs = {
         1: ['output/Format 1 JSON Lemmatized', 'output/Format 2 JSON Lemmatized'],
         2: ['output/Format 3 JSON Lemmatized', 'output/Format 4 JSON Lemmatized']
@@ -164,23 +152,19 @@ def extract_lda_topics(group):
         print("Invalid group number. Please choose 1 or 2.")
         return
 
-    # Collect all speeches
     all_speeches = []
 
-    # Process each directory in the group
     for directory in group_dirs[group]:
         if not os.path.exists(directory):
             print(f"Warning: Directory {directory} not found")
             continue
 
-        # Process each JSON file in the directory
         json_files = [f for f in os.listdir(directory) if f.endswith('.json')]
         for json_file in json_files:
             try:
                 with open(os.path.join(directory, json_file), 'r', encoding='utf-8') as f:
                     data = json.load(f)
 
-                # Combine all sentences from all paragraphs
                 speech_text = []
                 for page in data['pages']:
                     for paragraph in page['paragraphs']:
@@ -195,29 +179,27 @@ def extract_lda_topics(group):
     # Create document-term matrix with n-grams
     vectorizer = CountVectorizer(
         max_features=1000,
-        stop_words='english',  # Just use standard English stopwords
-        ngram_range=(1, 3),  # Use unigrams, bigrams, and trigrams
-        min_df=2,  # Minimum document frequency to include a phrase
-        token_pattern=r'(?u)[a-zA-Z]+(?:-[a-zA-Z]+)*'  # Custom pattern to exclude numbers
+        stop_words='english', 
+        ngram_range=(1, 3),  # unigrams, bigrams, and trigrams
+        min_df=2,  
+        token_pattern=r'(?u)[a-zA-Z]+(?:-[a-zA-Z]+)*'  
     )
     doc_term_matrix = vectorizer.fit_transform(all_speeches)
 
     # Apply LDA
     lda_model = LatentDirichletAllocation(
-        n_components=10,  # Extract 10 topics
+        n_components=10, 
         random_state=42,
         learning_method='batch',
         max_iter=20
     )
     lda_output = lda_model.fit_transform(doc_term_matrix)
 
-    # Get feature names (phrases)
     feature_names = vectorizer.get_feature_names_out()
 
     # Create output string for topics
     output_text = "Extracted Topics with Different Numbers of Words per Topic:\n\n"
 
-    # Run for different numbers of words per topic
     for num_words in range(4, 8):  # 4 to 7 words
         output_text += f"=== Results with {num_words} words per topic ===\n\n"
         
@@ -793,7 +775,6 @@ def add_word_counts_to_csv(input_csv, group, output_csv=None):
         # Map using the converted filenames
         df['word_count'] = df['filename'].apply(lambda x: word_counts.get(csv_to_json_filename(x), 0))
         
-        # Print sample of mapping results
         print("\nSample of filename mapping results:")
         sample_df = df[['filename', 'word_count']].head()
         print(sample_df)
@@ -853,7 +834,6 @@ def add_word_counts_to_csv(input_csv, group, output_csv=None):
         # Add word count column to DataFrame
         df['word_count'] = df['filename'].apply(lambda x: word_counts.get(json_to_pdf_filename(x), 0))
     
-    # Print statistics
     print("\nWord count statistics:")
     print(f"Number of files with word counts: {df['word_count'].gt(0).sum()}")
     print(f"Number of files without word counts: {df['word_count'].eq(0).sum()}")
@@ -945,7 +925,6 @@ def add_overall_sentiment(input_csv, group, output_csv=None):
     # Add sentiment score column to DataFrame
     df['overall_sentiment'] = df['filename'].map(sentiment_scores)
     
-    # Print some statistics about the sentiment scores
     print("\nSentiment score statistics:")
     print(f"Number of files with sentiment scores: {df['overall_sentiment'].notna().sum()}")
     print(f"Number of files without sentiment scores: {df['overall_sentiment'].isna().sum()}")
@@ -1046,7 +1025,6 @@ def convert_sentiment_to_categories(input_csv, output_csv=None):
                 duplicates='drop'
             )
             
-            # Print distribution of categories
             print(f"\nDistribution of categories for {col}:")
             print(df_cat[col + '_category'].value_counts().sort_index())
             
@@ -1149,7 +1127,6 @@ def add_keyword_columns_to_dataframe(input_csv, group, output_csv=None):
         col_name = phrase.replace(' ', '_')
         df[col_name] = df['filename'].map(keyword_freqs[phrase])
     
-    # Print some statistics about the keyword frequencies
     print("\nKeyword frequency statistics:")
     for phrase in KEY_PHRASES:
         col_name = phrase.replace(' ', '_')
@@ -1216,7 +1193,6 @@ def join_csvs_on_filename(csv_paths, output_csv='joined_data.csv'):
             print(f"Error joining {csv_path}: {str(e)}")
             print("Continuing with next CSV...")
     
-    # Print final statistics
     print("\nFinal DataFrame Statistics:")
     print(f"Total rows: {len(df)}")
     print(f"Total columns: {len(df.columns)}")
@@ -1261,7 +1237,6 @@ def adjust_sentiment_categories(input_csv, output_csv=None):
     
     # Process each pair of numerical and categorical columns
     for num_col in num_cols:
-        # Find corresponding categorical column
         cat_col = num_col + '_category'
         if cat_col not in df.columns:
             print(f"Warning: No categorical column found for {num_col}")
@@ -1281,7 +1256,6 @@ def adjust_sentiment_categories(input_csv, output_csv=None):
         # Make the changes
         df.loc[mask, cat_col] = 'neutral'
         
-        # Print final distribution
         print(f"Final distribution for {cat_col}:")
         print(df[cat_col].value_counts())
     
@@ -1299,11 +1273,10 @@ def adjust_sentiment_categories(input_csv, output_csv=None):
 
 # Example usage for Group 2 speeches pipeline
 if __name__ == "__main__":
-    # Read both CSVs
     sp500_df = pd.read_csv('Group 2 with SP500.csv')
     bonds_df = pd.read_csv('group2_bonds_data.csv')
     
-    # Set filename as index for both dataframes
+    #filename as index for both dataframes
     sp500_df.set_index('filename', inplace=True)
     bonds_df.set_index('filename', inplace=True)
     
@@ -1317,11 +1290,9 @@ if __name__ == "__main__":
     # Reset index to get filename back as a column
     sp500_df.reset_index(inplace=True)
     
-    # Save the merged dataframe
     sp500_df.to_csv('Group 2 with SP500 and Bonds.csv', index=False)
     print("Merged CSV saved as 'Group 2 with SP500 and Bonds.csv'")
     
-    # Print some statistics about the merge
     print(f"\nNumber of rows in original SP500 data: {len(sp500_df)}")
     print(f"Number of columns updated: {len(overlapping_cols)}")
     print("\nUpdated columns:")
