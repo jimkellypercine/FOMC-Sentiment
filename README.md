@@ -1,8 +1,7 @@
 # FOMC PDF to JSON Processor
 
+pdf2json_combined.py
 This script processes FOMC statement PDFs and converts them into structured JSON format. It handles both scanned (OCR) and text-based PDFs, with optional lemmatization for NLP tasks.
-
----
 
 ## How to Use
 
@@ -23,7 +22,16 @@ python pdf2json_combined.py --formats 1 2 3 4 --output-dir "output"
 python pdf2json_combined.py --formats 1 2 3 --output-dir ./output
 ```
 
----
+---------------
+generate_asset_datasets.py
+
+This script generates the financial data around each speech date. You specify either group 1 or group 2 when you call it, and it generates 2 CSVs (SP00 and 20year Bonds). There are optional command line arguments for how many days before and after you want to get data on.
+---------------
+feature_extraction.py 
+
+This script constructs the actual language features about each speech. Topics, their probabilities, sentiment scores, word count, etc. At the very end, it merges this CSV with the financial CSV from generate_asset_datasets. So it assumes you already have a financial dataset put together.
+---------------
+
 
 ## Requirements
 
@@ -55,19 +63,6 @@ Some libraries require system-level dependencies:
    ```bash
    brew install poppler
    ```
-
-## Example Workflow
-
-1. Clone the repository or download the script.
-2. Install the required Python and system dependencies.
-3. Place your FOMC PDFs in the appropriate input directory.
-4. Run the script with the desired arguments:
-   ```bash
-   python pdf2json_combined.py --formats 1 2 3 4 --output-dir ./output
-   ```
-5. Check the `output` directory for the generated JSON files.
-
----
 
 ## Notes
 
