@@ -29,8 +29,6 @@ This script generates the financial data around each speech date. You specify ei
 feature_extraction.py 
 
 This script constructs the actual language features about each speech. Topics, their probabilities, sentiment scores, word count, etc. At the very end, it merges this CSV with the financial CSV from generate_asset_datasets. So it assumes you already have a financial dataset put together.
----
-
 
 ## Requirements
 
